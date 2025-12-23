@@ -1,0 +1,8 @@
+{
+  "name": "VOI Nearest Scooter",
+  "content_in_root": false,
+  "domain": "voi_nearest_scooter",
+  "homeassistant": "2022.6.0",
+  "render_readme": true
+}
+

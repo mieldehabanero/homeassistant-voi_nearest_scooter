@@ -119,10 +119,10 @@ class VoiNearestScooterApi:
         """Get the list of zones of geo coordinates from the VOI API."""
         result = self.__request(
             "GET",
-            "https://api.voiapp.io/v1/zones?lat={}&lng={}".format(latitude, longitude),
+            "https://api.voiapp.io/v1/rides/zone-at?location={},{}".format(latitude, longitude),
         )
-        if result and "zones" in result:
-            return result["zones"]
+        if result and "zone" in result:
+            return result["zone"]
 
     def get_vehicles(self, latitude, longitude):
         """Get the list of vehicles of a zone from the VOI API."""
@@ -130,8 +130,10 @@ class VoiNearestScooterApi:
         if result and "zone_id" in result[0]:
             return self.__request(
                 "GET",
-                "https://api.voiapp.io/v1/vehicles/zone/{}/ready".format(
-                    result[0]["zone_id"]
+                "https://api.voiapp.io/v2/rides/vehicles?zone_id={}&user_location={},{}&include_suggestion=false".format(
+                    result[0]["zone_id"],
+                    latitude,
+                    longitude,
                 ),
             )
 

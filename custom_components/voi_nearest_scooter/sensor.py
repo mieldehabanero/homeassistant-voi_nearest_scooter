@@ -14,7 +14,6 @@ from homeassistant.const import (
     ATTR_LATITUDE,
     ATTR_LONGITUDE,
     CONF_NAME,
-    LENGTH_METERS,
 )
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
@@ -152,7 +151,7 @@ class VoiNearestScooterSensor(Entity):
     @property
     def unit_of_measurement(self):
         """Return the unit of measurement of the VOI Nearest Scooter Sensor."""
-        return LENGTH_METERS
+        return "m"
 
     @property
     def icon(self):

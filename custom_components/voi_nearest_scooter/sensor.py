@@ -49,8 +49,12 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     longitude = hass.config.longitude
 
     token_cache = load_json(token_path)
-    if not token_cache or "authentication_token" not in token_cache:
-        raise ValueError("Missing or bad token file.")
+    if not token_cache:
+        raise ValueError("Missing token file.")
+    
+    if "authentication_token" not in token_cache:
+        _LOGGER.warning("Authentication failed: Erroneous response (%s)", token_cache)
+        raise ValueError("Bad token file.")
 
     add_entities([VoiNearestScooterSensor(name, token_path, latitude, longitude)])
 

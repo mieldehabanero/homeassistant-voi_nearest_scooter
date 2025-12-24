@@ -18,7 +18,8 @@ from homeassistant.const import (
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
-from homeassistant.util.json import load_json, save_json
+from homeassistant.util.json import load_json
+from homeassistant.helpers.json import save_json
 
 _LOGGER = logging.getLogger(__name__)
 
